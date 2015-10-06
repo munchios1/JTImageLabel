@@ -36,6 +36,7 @@
 - (void)commonInit
 {
     self.space = 0.;
+    self.defaultAlignment = NSTextAlignmentLeft;
     self->_textLabel = [UILabel new];
     self->_imageView = [UIImageView new];
     
@@ -51,7 +52,7 @@
     
     CGFloat labelMaxWidth = CGRectGetWidth(self.frame) - imageWidth;
     CGFloat labelMaxHeight = CGRectGetHeight(self.frame);
-    
+
     labelMaxWidth -= self.space;
     
     if(self.textLabel.textAlignment == NSTextAlignmentLeft){
@@ -90,8 +91,11 @@
             self.textLabel.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + self.space, 0, labelWidth, labelMaxHeight);
         }
     }
-    else{
-        NSAssert(NO, @"JTImageLabel Alignement not supported");
+    else {
+        self.textLabel.textAlignment = self.defaultAlignment;
+        self.imageView.frame = CGRectMake(0, imageY, imageWidth, imageHeight);
+        self.textLabel.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + self.space, 0, labelMaxWidth, labelMaxHeight);
+ //       NSAssert(NO, @"Alignement not supported");
     }
 }
 

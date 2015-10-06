@@ -11,7 +11,7 @@
 
 @property (strong, nonatomic, readonly) UILabel *textLabel;
 @property (strong, nonatomic, readonly) UIImageView *imageView;
-
+@property (assign, nonatomic) NSTextAlignment defaultAlignment;
 @property (assign, nonatomic) CGFloat space;
 
 @end
